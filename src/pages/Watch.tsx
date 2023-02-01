@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import WatchCard from '@/components/WatchCard';
-import { useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getRecommendedVideos } from '@/store/reducers/getRecommendedVideos';
 import { getVideoDetails } from '@/store/reducers/getVideoDetails';
 import { useEffect, useState } from 'react';
@@ -11,13 +11,11 @@ import { MdOutlinePlaylistAdd } from 'react-icons/md';
 import { FaShare } from 'react-icons/fa';
 import { BsThreeDots } from 'react-icons/bs';
 
-type Props = {};
-
-const Watch = (props: Props) => {
+const Watch = () => {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useNavigate();
+  const dispatch = useAppDispatch();
   const currentPlaying = useAppSelector(
     (state) => state.youtubeApp.currentPlaying
   );
